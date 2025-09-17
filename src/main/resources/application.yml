@@ -1,0 +1,80 @@
+# application.yml
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true
+resilience4j.ratelimiter:
+  instances:
+    ragService:
+      limitForPeriod: 5                 # Maximum 5 requests
+      limitRefreshPeriod: 60s           # Time window is 60 seconds
+      timeoutDuration: 0s
+#springdoc:
+#  api-docs:
+#    path: /api-docs
+#    enabled: true
+#  swagger-ui:
+#    path: /swagger-ui
+#    enabled: true
+#    tags-sorter: alpha
+#    operations-sorter: alpha
+#    try-it-out-enabled: true
+#    filter: true
+spring:
+  ai:
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1536
+        max-document-batch-size: 10000 # Maximum number of documents per batch
+
+    openai:
+      api-key: your-open-ai-api-key
+      chat:
+        options:
+          model: gpt-3.5-turbo
+          temperature: 0.7
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rag-chat
+    username: admin
+    password: password
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+app:
+  api-key: a8457101d40a63c10e304bd0f46a8621
+
+resilience4j:
+  ratelimiter:
+    configs:
+      default:
+        limit-for-period: 100
+        limit-refresh-period: 60s
+        timeout-duration: 0
+    instances:
+      api:
+        base-config: default
+
+logging:
+  level:
+    root: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  observations:
+    annotations:
+      enabled: true
