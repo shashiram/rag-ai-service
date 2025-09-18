@@ -29,7 +29,7 @@ public class RagService {
         this.vectorStore = vectorStore;
     }
 
-    public String generateResponse2(String query) {
+    public String generateResponse(String query) {
 
         logger.info("call similaritySearch for query {}",query);
         List<Document> documents = this.vectorStore.similaritySearch(SearchRequest.builder().query(query).topK(5).build());

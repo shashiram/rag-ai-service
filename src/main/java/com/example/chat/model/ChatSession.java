@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,6 +16,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "chat_sessions")
+@EntityListeners(AuditingEntityListener.class)
 public class ChatSession {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -31,11 +36,11 @@ public class ChatSession {
 //    @JsonIgnore
 //    private List<ChatMessage> chatMessages=new ArrayList<>();
     
-    @CreationTimestamp
+    @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
     
-    @UpdateTimestamp
+    @LastModifiedDate
     private LocalDateTime updatedAt;
 
     public UUID getId() {

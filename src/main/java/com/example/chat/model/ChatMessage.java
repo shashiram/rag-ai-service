@@ -1,13 +1,15 @@
 package com.example.chat.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import java.time.LocalDateTime;
-import java.util.Map;
 import java.util.UUID;
 
 @Entity
 @Table(name = "chat_messages")
+@EntityListeners(AuditingEntityListener.class)
 public class ChatMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -27,7 +29,7 @@ public class ChatMessage {
     @Column(columnDefinition = "TEXT")
     private String context;
     
-    @CreationTimestamp
+    @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 

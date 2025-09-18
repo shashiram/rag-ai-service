@@ -61,7 +61,7 @@ public class ChatMessageService {
 
             // get resp from open AI
             logger.info("calling to open AI to get response for user message ");
-            String content=ragService.generateResponse2(message.getContent());
+            String content=ragService.generateResponse(message.getContent());
             logger.info("open AI response for user message {} ",content);
             ChatMessage chatMessageResp=new ChatMessage();
             chatMessageResp.setSession(session);

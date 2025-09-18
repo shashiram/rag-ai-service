@@ -51,7 +51,7 @@ public class QueryController {
             )
             @RequestBody QueryRequest request) {
         try {
-            String response = ragService.generateResponse2(request.getQuestion());
+            String response = ragService.generateResponse(request.getQuestion());
             return ResponseEntity.ok(new QueryResponse(response, "success"));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

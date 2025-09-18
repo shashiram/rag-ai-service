@@ -10,17 +10,18 @@ Enhancements in this version:
 - Docker multi-stage build 
 
 ## Quickstart
-1. Open project in Idea.
-2. run below cmd on root folder
-      docker compose -f docker-compose.db.yml up --build
+1. Clone project from github.
+2. Setup api-key and open-api-key.
 3. run below cmd on root folder
-      docker compose -f docker-compose.pg.yml up --build
+      docker compose -f docker-compose.yml up --build
 
-App: http://localhost:8080
-   OpenAPI UI: http://localhost:8080/swagger-ui.html or /swagger-ui/index.html
+
+   App: http://localhost:8080
+   RagChatAPI swagger UI: http://localhost:8080/swagger-ui.html or /swagger-ui/index.html
    pgAdmin: http://localhost:5050 (shashiram01@gmail.com / password)
-   prometheus: http://localhost:9090 (shashiram01@gmail.com / password)
-   grafana: http://localhost:3000 (shashiram01@gmail.com / password)
+   postgres db: http://localhost:5432 (admin / password)
+   prometheus: http://localhost:9090 
+   grafana: http://localhost:3000 (admin / password)
 
 
 

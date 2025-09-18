@@ -44,13 +44,13 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
 
 server:
-  port: 8080
+  port: 8081
 
 app:
   api-key: a8457101d40a63c10e304bd0f46a8621
