@@ -83,7 +83,7 @@ public class ChatSessionController {
 //        chatSessionService.getFavoriteSessions(userId);
 //        return ResponseEntity.status(429).build();
 //    }
-    @RateLimiter(name = "ragService")
+
     @PatchMapping("/{sessionId}/title")
     @Operation(summary = "Rename a chat session")
     public ResponseEntity<ChatSessionDTO> renameSession(
@@ -94,7 +94,7 @@ public class ChatSessionController {
         return new ResponseEntity<>(chatSessionDTO, HttpStatus.CREATED);
     }
 
-    @RateLimiter(name = "ragService")
+
     @PatchMapping("/{sessionId}/favorite")
     @Operation(summary = "Toggle favorite status of a session")
     public ResponseEntity<ChatSessionDTO> toggleFavorite(
@@ -104,7 +104,7 @@ public class ChatSessionController {
         return new ResponseEntity<>(chatSessionDTO, HttpStatus.OK);
     }
 
-    @RateLimiter(name = "ragService")
+
     @DeleteMapping("/{sessionId}")
     @Operation(summary = "Delete a chat session")
     public ResponseEntity<Void> deleteSession(

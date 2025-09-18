@@ -1,27 +1,9 @@
 # application.yml
-springdoc:
-  swagger-ui:
-    enabled: true
-  api-docs:
-    enabled: true
-resilience4j.ratelimiter:
-  instances:
-    ragService:
-      limitForPeriod: 5                 # Maximum 5 requests
-      limitRefreshPeriod: 60s           # Time window is 60 seconds
-      timeoutDuration: 0s
-#springdoc:
-#  api-docs:
-#    path: /api-docs
-#    enabled: true
-#  swagger-ui:
-#    path: /swagger-ui
-#    enabled: true
-#    tags-sorter: alpha
-#    operations-sorter: alpha
-#    try-it-out-enabled: true
-#    filter: true
+server:
+  port: 8081
 spring:
+  application:
+    name: rag-chat-service
   ai:
     vectorstore:
       pgvector:
@@ -30,7 +12,6 @@ spring:
         distance-type: COSINE_DISTANCE
         dimensions: 1536
         max-document-batch-size: 10000 # Maximum number of documents per batch
-
     openai:
       api-key: your-open-ai-api-key
       chat:
@@ -48,23 +29,21 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
-server:
-  port: 8081
-
 app:
   api-key: a8457101d40a63c10e304bd0f46a8621
+rate-limiter:
+  limit-for-period: 5                     # Maximum 5 requests
+  limit-refresh-period-seconds: 60        # Time window is 60 seconds
+  timeout-duration-millis: 0              # Time out before refill token
 
-resilience4j:
-  ratelimiter:
-    configs:
-      default:
-        limit-for-period: 100
-        limit-refresh-period: 60s
-        timeout-duration: 0
-    instances:
-      api:
-        base-config: default
+
+
+
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true
 
 logging:
   level:
@@ -78,3 +57,11 @@ management:
   observations:
     annotations:
       enabled: true
+
+#resilience4j:
+#  ratelimiter:
+#    instances:
+#      rag-service:
+#        limitForPeriod: 5                 # Maximum 5 requests
+#        limitRefreshPeriod: 60s           # Time window is 60 seconds
+#        timeoutDuration: 0s

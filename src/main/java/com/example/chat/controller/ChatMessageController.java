@@ -43,7 +43,6 @@ public class ChatMessageController {
     }
 
     @PostMapping
-    @RateLimiter(name = "ragService")
     @Operation(summary = "Add a message to a chat session")
     public ResponseEntity<ChatMessageDTO> addMessage(
             @RequestHeader("X-API-Key") String apiKey,
@@ -53,7 +52,6 @@ public class ChatMessageController {
         return new ResponseEntity<>(chatMessageDTO, HttpStatus.CREATED);
     }
 
-    @RateLimiter(name = "ragService")
     @GetMapping("/paginated")
     @Operation(summary = "Get paginated message history for a session")
     public ResponseEntity<Page<ChatMessageDTO>> getMessageHistoryPaginated(

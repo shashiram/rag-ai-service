@@ -49,7 +49,7 @@ public class FileUploadController {
         )
     })
     @PostMapping(value = "/upload", consumes = "multipart/form-data")
-    @RateLimiter(name = "ragService")
+
     public ResponseEntity<String> uploadFile(
             @Parameter(description = "Text file to upload", required = true)
             @RequestParam("file") MultipartFile file) {

@@ -42,7 +42,7 @@ public class QueryController {
         )
     })
     @PostMapping
-    @RateLimiter(name = "ragService")
+
     public ResponseEntity<QueryResponse> query(
             @io.swagger.v3.oas.annotations.parameters.RequestBody(
                 description = "Query request containing the question",
