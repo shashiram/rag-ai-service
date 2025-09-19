@@ -30,14 +30,11 @@ spring:
       hibernate:
         format_sql: true
 app:
-  api-key: a8457101d40a63c10e304bd0f46a8621
+  api-key: test-1,test-2,test-3
 rate-limiter:
   limit-for-period: 5                     # Maximum 5 requests
   limit-refresh-period-seconds: 60        # Time window is 60 seconds
   timeout-duration-millis: 0              # Time out before refill token
-
-
-
 
 springdoc:
   swagger-ui:
