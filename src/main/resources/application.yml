@@ -30,7 +30,11 @@ spring:
       hibernate:
         format_sql: true
 app:
-  api-key: test-1,test-2,test-3
+  apiKeys:
+    - test-1
+    - test-2
+    - test-3
+
 rate-limiter:
   limit-for-period: 5                     # Maximum 5 requests
   limit-refresh-period-seconds: 60        # Time window is 60 seconds
