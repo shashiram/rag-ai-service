@@ -58,6 +58,19 @@ management:
   observations:
     annotations:
       enabled: true
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+#  otlp:
+#    metrics:
+#      export:
+#        url: http://localhost:4318
+#        step: 10s
+#    tracing:
+#      endpoint: http://localhost:4318
+  tracing:
+    sampling:
+      probability: 1.0
 
 #resilience4j:
 #  ratelimiter:
@@ -66,3 +79,10 @@ management:
 #        limitForPeriod: 5                 # Maximum 5 requests
 #        limitRefreshPeriod: 60s           # Time window is 60 seconds
 #        timeoutDuration: 0s
+
+#app:
+#  apiKeys:
+#    user1: abc@123&xyz
+#    user2: def#456!qwe
+#    user2: ghi:789*klm
+

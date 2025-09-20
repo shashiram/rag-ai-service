@@ -1,0 +1,41 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: "0.0.0.0:4318"
+
+processors:
+  batch:
+
+exporters:
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+
+  zipkin:
+    endpoint: "http://zipkin-all-in-one:9411/api/v2/spans"
+    format: proto
+
+#  jaeger:
+#    endpoint: jaeger-all-in-one:14250
+#    tls:
+#      insecure: true
+
+extensions:
+  # Responsible for responding to health checks on behalf of collector
+  health_check:
+  # Fetches collectors performance data
+  pprof:
+  # Serves as HTTP endpoint that provides live debugging data about instrumented application
+  zpages:
+
+service:
+  extensions: [health_check, pprof, zpages]
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [prometheus]
+    traces:
+      receivers: [ otlp ]
+      processors: [ batch ]
+      exporters: [ zipkin,prometheus ]

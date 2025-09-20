@@ -85,8 +85,6 @@
       <artifactId>modelmapper</artifactId>
       <version>3.2.0</version>
     </dependency>
-
-
     <dependency>
       <groupId>org.springframework.ai</groupId>
       <artifactId>spring-ai-starter-model-openai</artifactId>
@@ -119,11 +117,55 @@
       <version>5.2.3</version>
     </dependency>
 
+    <!--        Micrometer dependencies-->
+<!--    <dependency>-->
+<!--      <groupId>io.micrometer</groupId>-->
+<!--      <artifactId>micrometer-registry-otlp</artifactId>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>io.micrometer</groupId>-->
+<!--      <artifactId>micrometer-tracing-bridge-otel</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>io.opentelemetry</groupId>-->
+<!--      <artifactId>opentelemetry-exporter-otlp</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>io.opentelemetry</groupId>-->
+<!--      <artifactId>opentelemetry-api</artifactId>-->
+<!--      <version>1.28.0</version> &lt;!&ndash; Use latest version &ndash;&gt;-->
+<!--    </dependency>-->
+
+    <dependency>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-tracing-bridge-brave</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.zipkin.reporter2</groupId>
+      <artifactId>zipkin-reporter-brave</artifactId>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/io.github.openfeign/feign-micrometer -->
+    <dependency>
+      <groupId>io.github.openfeign</groupId>
+      <artifactId>feign-micrometer</artifactId>
+      <version>13.5</version>
+    </dependency>
+
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>io.micrometer</groupId>-->
+<!--      <artifactId>micrometer-tracing-bridge-brave</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>io.zipkin.reporter2</groupId>-->
+<!--      <artifactId>zipkin-reporter-brave</artifactId>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>org.mockito</groupId>
@@ -131,6 +173,7 @@
       <version>5.3.1</version>
       <scope>test</scope>
     </dependency>
+
 
   </dependencies>
   <dependencyManagement>
