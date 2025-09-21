@@ -1,0 +1,88 @@
+# application.yml
+server:
+  port: 8081
+spring:
+  application:
+    name: rag-chat-service
+  ai:
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1536
+        max-document-batch-size: 10000 # Maximum number of documents per batch
+    openai:
+      api-key: your-open-ai-api-key
+      chat:
+        options:
+          model: gpt-3.5-turbo
+          temperature: 0.7
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rag-chat
+    username: admin
+    password: password
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+app:
+  apiKeys:
+    - ${APP_APIKEYS_0:test-1}
+    - ${APP_APIKEYS_1:test-2}
+    - ${APP_APIKEYS_2:test-3}
+
+rate-limiter:
+  limit-for-period: 5                     # Maximum 5 requests
+  limit-refresh-period-seconds: 60        # Time window is 60 seconds
+  timeout-duration-millis: 0              # Time out before refill token
+
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true
+
+logging:
+  level:
+    root: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  observations:
+    annotations:
+      enabled: true
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+#  otlp:
+#    metrics:
+#      export:
+#        url: http://localhost:4318
+#        step: 10s
+#    tracing:
+#      endpoint: http://localhost:4318
+  tracing:
+    sampling:
+      probability: 1.0
+
+#resilience4j:
+#  ratelimiter:
+#    instances:
+#      rag-service:
+#        limitForPeriod: 5                 # Maximum 5 requests
+#        limitRefreshPeriod: 60s           # Time window is 60 seconds
+#        timeoutDuration: 0s
+
+#app:
+#  apiKeys:
+#    user1: abc@123&xyz
+#    user2: def#456!qwe
+#    user2: ghi:789*klm
+
