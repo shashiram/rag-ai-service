@@ -1,13 +1,17 @@
 package com.rag.chat.config;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.tags.Tag;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Arrays;
 
 @Configuration
 public class OpenApiConfig {
@@ -32,6 +36,12 @@ public class OpenApiConfig {
                                         .name("X-API-Key")
                                         .type(SecurityScheme.Type.APIKEY)
                                         .in(SecurityScheme.In.HEADER)
-                                        .description("API Key Authentication")));
+                                        .description("API Key Authentication")))
+                .tags(Arrays.asList(
+                        new Tag().name("Chat Sessions").description("APIs for managing chat sessions"),
+                        new Tag().name("Chat Messages").description("APIs for managing chat messages"),
+                        new Tag().name("Document Upload").description("APIs for uploading and processing documents"),
+                        new Tag().name("Query").description("APIs for querying the RAG system")
+                ));
     }
 }

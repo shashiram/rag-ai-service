@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/query")
-@Tag(name = "Query", description = "APIs for querying the RAG system")
+@Tag(name = "Query")
 public class QueryController {
     
     private final RagService ragService;

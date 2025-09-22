@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/files")
-@Tag(name = "File Upload", description = "APIs for uploading and processing documents")
+@Tag(name = "Document Upload")
 public class FileUploadController {
     
     private final FileProcessingService fileProcessingService;

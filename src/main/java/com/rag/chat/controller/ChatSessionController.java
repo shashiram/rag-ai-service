@@ -12,13 +12,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.stringtemplate.v4.ST;
 
 import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/sessions")
-@Tag(name = "Chat Sessions", description = "APIs for managing chat sessions")
+@Tag(name = "Chat Sessions")
 public class ChatSessionController {
 
     private static final Logger logger = LoggerFactory.getLogger(ChatSessionController.class);
@@ -71,11 +72,11 @@ public class ChatSessionController {
 
     @DeleteMapping("/{sessionId}")
     @Operation(summary = "Delete a chat session")
-    public ResponseEntity<Void> deleteSession(
+    public ResponseEntity<String> deleteSession(
             @RequestHeader("X-API-Key") String apiKey,
             @PathVariable UUID sessionId) {
         chatSessionService.deleteSession(sessionId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<String>("Session deleted successfully with ID: "+sessionId,HttpStatus.OK);
     }
 
 //    @GetMapping

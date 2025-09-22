@@ -13,8 +13,8 @@ public class ExceptionUtils {
                 "Session with ID: " + sessionId);
     }
 
-    public static OpenAIClientApiError openAIClientApiCallError() {
-        return new OpenAIClientApiError(CustomErrorCode.EXTERNAL_SERVICE_ERROR,
+    public static OpenAIClientApiException openAIClientApiCallError() {
+        return new OpenAIClientApiException(CustomErrorCode.EXTERNAL_SERVICE_ERROR,
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 "Open AI api error ");
     }

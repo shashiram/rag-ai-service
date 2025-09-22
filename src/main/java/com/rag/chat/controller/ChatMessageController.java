@@ -21,7 +21,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/messages")
-@Tag(name = "Chat Messages", description = "APIs for managing chat messages")
+@Tag(name = "Chat Messages")
 public class ChatMessageController {
     private static final Logger logger = LoggerFactory.getLogger(ChatMessageController.class);
 

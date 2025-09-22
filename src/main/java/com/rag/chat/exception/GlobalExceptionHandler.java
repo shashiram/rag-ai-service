@@ -15,8 +15,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(OpenAIClientApiError.class)
-    public ResponseEntity<ApiErrorResponse> handleOpenAIClientApiErrorException(OpenAIClientApiError ex,WebRequest request) {
+    @ExceptionHandler(OpenAIClientApiException.class)
+    public ResponseEntity<ApiErrorResponse> handleOpenAIClientApiErrorException(OpenAIClientApiException ex, WebRequest request) {
         return handleApiException(ex,request);
     }
 
